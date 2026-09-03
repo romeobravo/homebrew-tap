@@ -1,0 +1,30 @@
+class PeonPoke < Formula
+  desc "Trackpad haptic notifications on Mac for when your AI coding agent needs you"
+  homepage "https://github.com/romeobravo/peon-poke"
+  url "https://github.com/romeobravo/peon-poke/archive/refs/tags/v0.4.1.tar.gz"
+  sha256 "5a9c9d2784950bb0638ef2ac6a4326a9b13b474f49b8a0a1517a54972c219d81"
+  license "MIT"
+
+  depends_on :macos
+
+  def install
+    system "make", "CC=#{ENV.cc}"
+    libexec.install "poke.sh", "peon-poke-setup", "config.json"
+    libexec.install "adapters", "plugins", "bin"
+    chmod 0755, libexec/"peon-poke-setup"
+    bin.install_symlink libexec/"bin/poke" => "poke"
+    (bin/"peon-poke-setup").write_exec_script(libexec/"peon-poke-setup")
+  end
+
+  def caveats
+    <<~EOS
+      Run `peon-poke-setup` to register hooks for detected agents
+      (Claude Code, Codex, pi, oh-my-pi). Runtime installs to ~/.peon-poke
+      so hook registrations survive upgrades.
+    EOS
+  end
+
+  test do
+    assert_match "names:", shell_output("#{bin}/poke definitely-not-a-pattern 2>&1")
+  end
+end
