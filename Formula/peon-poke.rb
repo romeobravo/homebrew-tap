@@ -13,7 +13,11 @@ class PeonPoke < Formula
     libexec.install "adapters", "plugins", "bin"
     chmod 0755, libexec/"peon-poke-setup"
     bin.install_symlink libexec/"bin/poke" => "poke"
-    (bin/"peon-poke-setup").write_exec_script(libexec/"peon-poke-setup")
+    (bin/"peon-poke-setup").write <<~EOS
+      #!/bin/bash
+      exec "#{libexec}/peon-poke-setup" "$@"
+    EOS
+    chmod 0755, bin/"peon-poke-setup"
   end
 
   def caveats
