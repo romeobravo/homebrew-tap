@@ -1,15 +1,15 @@
 class PeonPoke < Formula
   desc "Trackpad haptic notifications on Mac for when your AI coding agent needs you"
   homepage "https://github.com/romeobravo/peon-poke"
-  url "https://github.com/romeobravo/peon-poke/archive/refs/tags/v0.4.4.tar.gz"
-  sha256 "42991c7aef8304c9f0d9145b2d5f982e82c27f6da87edcf4011a5d797de83255"
+  url "https://github.com/romeobravo/peon-poke/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "fdb8a5bb80dd8b4a7ac8db30a8555518ecb9cfa971392498ddee0187aa609830"
   license "MIT"
 
   depends_on :macos
 
   def install
     system "make", "CC=#{ENV.cc}"
-    libexec.install "poke.sh", "peon-poke-setup", "config.json"
+    libexec.install "poke.sh", "peon-poke-setup", "uninstall.sh", "config.json"
     libexec.install "adapters", "plugins", "bin"
     chmod 0755, libexec/"peon-poke-setup"
     bin.install_symlink libexec/"bin/poke" => "poke"
