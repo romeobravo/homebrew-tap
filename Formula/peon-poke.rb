@@ -9,8 +9,9 @@ class PeonPoke < Formula
 
   def install
     system "make", "CC=#{ENV.cc}"
-    libexec.install "poke.sh", "peon-poke-setup", "uninstall.sh", "config.json"
+    libexec.install "poke.sh", "peon-poke", "peon-poke-setup", "uninstall.sh", "config.json"
     libexec.install "adapters", "plugins", "bin"
+    chmod 0755, libexec/"peon-poke"
     chmod 0755, libexec/"peon-poke-setup"
     bin.install_symlink libexec/"bin/poke" => "poke"
     (bin/"peon-poke-setup").write <<~EOS
