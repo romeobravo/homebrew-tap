@@ -1,8 +1,8 @@
 class PeonPoke < Formula
   desc "Trackpad haptic notifications on Mac for when your AI coding agent needs you"
   homepage "https://github.com/romeobravo/peon-poke"
-  url "https://github.com/romeobravo/peon-poke/archive/refs/tags/v0.6.1.tar.gz"
-  sha256 "6178abd817b078a21bd80f21efa28894b62937901fce82641cef9124d2c3934b"
+  url "https://github.com/romeobravo/peon-poke/archive/refs/tags/v0.6.2.tar.gz"
+  sha256 "da17f8a511809a5d43f732b7d4b7688f1378a47982c893988fb99406493dddb1"
   license "MIT"
 
   depends_on :macos
