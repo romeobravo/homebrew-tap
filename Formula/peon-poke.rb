@@ -1,8 +1,8 @@
 class PeonPoke < Formula
   desc "Trackpad haptic notifications on Mac for when your AI coding agent needs you"
   homepage "https://github.com/romeobravo/peon-poke"
-  url "https://github.com/romeobravo/peon-poke/archive/refs/tags/v0.8.0.tar.gz"
-  sha256 "8069d133bbb08a78a6d3fd82da9c567323d4772a7fe69ab58aea6a65a6a3168e"
+  url "https://github.com/romeobravo/peon-poke/archive/refs/tags/v0.9.0.tar.gz"
+  sha256 "1c9911039f9086cfd371c4bcc0062c5d1603c75aaac2875dae2f0e7af3886a83"
   license "MIT"
 
   depends_on :macos
@@ -14,7 +14,6 @@ class PeonPoke < Formula
     chmod 0755, libexec/"peon-poke"
     bin.install_symlink libexec/"bin/poke" => "poke"
     bin.install_symlink libexec/"peon-poke" => "peon-poke"
-    bin.install_symlink libexec/"peon-poke" => "peon-poke-uninstall"
   end
 
   def caveats
